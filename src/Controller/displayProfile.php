@@ -1,0 +1,3 @@
+<?php
+
+$userInfos = userModel::displayProfile();

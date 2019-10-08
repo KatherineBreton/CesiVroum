@@ -1,0 +1,192 @@
+body {
+    background-color: #fafafa !important;
+}
+
+.bodybg {
+    background-image: url(../images/fondue.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.navbox {
+    background-color: #5EA8D6;
+}
+
+h1 {
+    color: rgb(34, 34, 34);
+    width: 100%;
+    text-align: center;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    font-size: 4em !important;
+}
+
+.white {
+    color: white !important;
+}
+
+.centre {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    color: rgb(34, 34, 34) !important;
+}
+
+.section-box {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.champ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 30px;
+}
+
+#recherche {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.champ-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 38%;
+    margin: 40px;
+}
+
+input {
+    border-radius: 12px;
+    padding: 5px 15px;
+    border: none;
+    background-color: white;
+    box-shadow: rgba(29, 29, 29, 0.582) 0px 1px 1px;
+}
+
+#logo {
+    height: 55px;
+    width: auto;
+}
+
+footer {
+    background-color: rgb(233, 233, 233);
+    position: absolute !important;
+    bottom: 0% !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important; 
+    align-items: center !important;
+}
+
+.footer-fond {
+    background-color: rgb(233, 233, 233);
+    width: 100% !important;
+}
+
+footer > p {
+    color: black !important;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: rgb(0, 0, 0) !important;
+}
+
+a:link {
+    text-decoration: none !important;
+}
+
+#social {
+    display: flex;
+    
+}
+
+#social > a > img {
+    width: 50px !important;
+    height: auto;
+}
+
+.bg-lights {
+    background-color: #5EA8D6;
+}
+
+.nav-link {
+    margin-right: 15px;
+    margin-left: 15px;
+    color: white !important;
+}
+
+.bouton-vide {
+    border-radius: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #5EA8D6;
+    color: #5EA8D6!important;
+    padding: 5px 28px;
+    font-size: 1.5em;
+    margin: 10px;
+    transition:all 0.5s ease-in-out;
+}
+
+.bouton-vide:hover {
+    background-color: #5EA8D6;
+    color: white !important;
+    
+}
+
+.bouton-plein {
+    background-color: #5EA8D6;
+    color: white !important;
+    padding: 5px 28px;
+    font-size: 1.5em;
+    border-radius: 50px;
+    margin: 10px;
+    transition:all .5s ease-in-out;
+}
+
+.bouton-plein:hover {
+    background-color: rgb(48, 83, 105);
+}
+
+#recherche-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+section {
+    background-color: #ffffff !important;
+    width: 100% !important;
+    padding: 50px 10px;
+    border-radius: 15px;
+    box-shadow: rgba(29, 29, 29, 0.582) 0px 1px 1px;
+}
+
+.ligne {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 960px) {
+
+    body {
+        background-color: #fafafa !important;
+        background-image: none !important;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+}
