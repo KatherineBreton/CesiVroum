@@ -18,6 +18,10 @@ if(!empty($_POST)){
         $json['token'] = $token;
         $json['success'] = true;
         $json['message'] = 'Connexion réussie';
+
+//        $isSafe = userModel::verifyToken($token);
+//        $json['isSafe'] = $isSafe;
+
         echo json_encode($json);
     }
 }

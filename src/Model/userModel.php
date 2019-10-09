@@ -91,13 +91,16 @@ class userModel
         );
     }
 
-    public static function verifyToken(){
+    public static function verifyToken($token){
         global $bdd;
 
-        $req = $bdd->prepare("SELECT use_token FROM t_user WHERE use_username =" . $_POST['username']);
-        $req->execute();
-        $token = $req->fetch(PDO::FETCH_ASSOC);
+        $req = $bdd->prepare("SELECT use_token FROM t_user WHERE use_username = :username");
+        $req->execute([
+            'username' => $_POST['username']
+        ]);
+        $dbToken = $req->fetch(PDO::FETCH_ASSOC);
+//        $safe = ($token == $dbToken['use_token']);
 
-        return $token;
+//        return $safe;
     }
 }
