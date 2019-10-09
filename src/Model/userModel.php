@@ -23,12 +23,10 @@ class userModel
 
     public static function signIn()
     {
-
         global $bdd;
         global $res;
         global $passwordCorrect;
 
-        print_r($_POST);
         $req = $bdd->prepare('SELECT * FROM t_user WHERE use_username = :username');
         $req->execute([
             'username' => $_POST['username']
@@ -83,5 +81,23 @@ class userModel
         $req->execute();
         $userInfo = $req->fetchAll(PDO::FETCH_ASSOC);
         return $userInfo;
+    }
+
+    public static function insertToken($token){
+        global $bdd;
+
+        $req = $bdd->prepare("UPDATE t_user SET use_token = '" . $token . "' WHERE use_username ='" . $_POST['username'] . "'");
+        $req->execute(
+        );
+    }
+
+    public static function verifyToken(){
+        global $bdd;
+
+        $req = $bdd->prepare("SELECT use_token FROM t_user WHERE use_username =" . $_POST['username']);
+        $req->execute();
+        $token = $req->fetch(PDO::FETCH_ASSOC);
+
+        return $token;
     }
 }
