@@ -3,6 +3,10 @@ require_once ("../src/Model/dbConnection.php");
 require_once ("../src/Model/userModel.php");
 header('Content-Type: application/json');
 
+//POST
+//Permet à un utilisateur de se connecter
+//Variables : username, password
+
 if(!empty($_POST)){
     userModel::signIn();
     if(!$res || !$passwordCorrect){
@@ -18,9 +22,6 @@ if(!empty($_POST)){
         $json['token'] = $token;
         $json['success'] = true;
         $json['message'] = 'Connexion réussie';
-
-//        $isSafe = userModel::verifyToken($token);
-//        $json['isSafe'] = $isSafe;
 
         echo json_encode($json);
     }

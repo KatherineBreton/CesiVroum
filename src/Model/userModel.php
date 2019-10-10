@@ -50,8 +50,6 @@ class userModel
 
     public static function editProfile()
     {
-        print_r($_POST);
-
         global $bdd;
 
         $req = $bdd->prepare('UPDATE t_user
@@ -86,21 +84,66 @@ class userModel
     public static function insertToken($token){
         global $bdd;
 
-        $req = $bdd->prepare("UPDATE t_user SET use_token = '" . $token . "' WHERE use_username ='" . $_POST['username'] . "'");
-        $req->execute(
-        );
-    }
-
-    public static function verifyToken($token){
-        global $bdd;
-
-        $req = $bdd->prepare("SELECT use_token FROM t_user WHERE use_username = :username");
+        $req = $bdd->prepare("UPDATE t_user SET use_token = '" . $token . "' WHERE use_username = :username");
         $req->execute([
             'username' => $_POST['username']
         ]);
+    }
+
+    public static function getToken(){
+        global $bdd;
+
+        $req = $bdd->prepare("SELECT use_token FROM t_user WHERE use_username = '" . $_POST['username'] . "'");
+        $req->execute();
         $dbToken = $req->fetch(PDO::FETCH_ASSOC);
 //        $safe = ($token == $dbToken['use_token']);
 
-//        return $safe;
+        return $dbToken;
+    }
+
+    public static function displayProfileWithToken()
+    {
+            global $bdd;
+
+            $req = $bdd->prepare('SELECT * FROM t_user WHERE USE_USERNAME = :username');
+            $req->execute([
+                'username' => $_POST['username']
+            ]);
+            $userInfo = $req->fetchAll(PDO::FETCH_ASSOC);
+
+            return $userInfo;
+    }
+
+    public static function editProfileWithToken()
+    {
+        global $bdd;
+
+        $req = $bdd->prepare('UPDATE t_user
+            SET use_username = :username, use_mail = :email, use_age = :age, use_tel = :tel, use_name = :lname, use_fname = :fname, use_bio = :bio
+            WHERE USE_USERNAME = :username');
+        $req->execute([
+            'username' => $_POST['username'],
+//            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            'email' => $_POST['email'],
+            'age' => $_POST['age'],
+            'tel' => $_POST['tel'],
+            'lname' => $_POST['lname'],
+            'fname' => $_POST['fname'],
+//            'exp' => $_POST['exp'],
+//            'status' => $_POST['status'],
+//            'gender' => $_POST['gender'],
+            'bio' => $_POST['bio'],
+//            'animals' => $_POST['animals'],
+//            'smoke' => $_POST['smoke'],
+        ]);
+    }
+
+    public static function destroyToken(){
+        global $bdd;
+
+        $req = $bdd->prepare("UPDATE t_user SET use_token = null WHERE USE_USERNAME = :username");
+        $req->execute([
+            'username' => $_POST['username']
+        ]);
     }
 }
